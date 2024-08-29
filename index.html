@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipkart Clone</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background: #2874f0;
+            color: #fff;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+        footer {
+            background: #2874f0;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            width: 200px;
+            text-align: center;
+        }
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .product-card button {
+            background: #2874f0;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .product-card button:hover {
+            background: #0056b3;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 20px auto;
+        }
+        form label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        form input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        form button {
+            background: #2874f0;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        form button:hover {
+            background: #0056b3;
+        }
+        p {
+            margin-top: 10px;
+        }
+        a {
+            color: #2874f0;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Flipkart Clone</h1>
+            <nav>
+                <a href="#" onclick="showSection('home')">Home</a>
+                <a href="#" onclick="showSection('products')">Products</a>
+                <a href="#" onclick="showSection('login')">Login</a>
+                <a href="#" onclick="showSection('signup')">Sign Up</a>
+                <a href="#" onclick="logout()" id="logoutLink" style="display: none;">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <div id="home" class="section active">
+        <main>
+            <div class="container">
+                <h2>Welcome to Flipkart Clone</h2>
+                <p>Please log in or sign up to view products.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Products Section -->
+    <div id="products" class="section">
+        <main>
+            <div class="container">
+                <h2>Product Listings</h2>
+                <div class="product-grid">
+                    <!-- Product Card 1 -->
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/200" alt="Product Image">
+                        <h3>Product 1</h3>
+                        <p>$100</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                    <!-- Product Card 2 -->
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/200" alt="Product Image">
+                        <h3>Product 2</h3>
+                        <p>$150</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                    <!-- Product Card 3 -->
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/200" alt="Product Image">
+                        <h3>Product 3</h3>
+                        <p>$200</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                    <!-- Product Card 4 -->
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/200" alt="Product Image">
+                        <h3>Product 4</h3>
+                        <p>$250</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Login Section -->
+    <div id="login" class="section">
+        <main>
+            <div class="container">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" name="email" required>
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" name="password" required>
+                    <button type="submit">Login</button>
+                    <p>Don't have an account? <a href="#" onclick="showSection('signup')">Sign up</a></p>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- Sign Up Section -->
+    <div id="signup" class="section">
+        <main>
+            <div class="container">
+                <h2>Sign Up</h2>
+                <form id="signupForm">
+                    <label for="signupName">Name:</label>
+                    <input type="text" id="signupName" name="name" required>
+                    <label for="signupEmail">Email:</label>
+                    <input type="email" id="signupEmail" name="email" required>
+                    <label for="signupPassword">Password:</label>
+                    <input type="password" id="signupPassword" name="password" required>
+                    <button type="submit">Sign Up</button>
+                    <p>Already have an account? <a href="#" onclick="showSection('login')">Login</a></p>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Flipkart Clone. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        function logout() {
+            localStorage.removeItem('loggedIn');
+            localStorage.removeItem('user');
+            showSection('home');
+            document.getElementById('logoutLink').style.display = 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Show home section by default
+            showSection('home');
+
+            // Handle Login
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', (event) => {
+                    event.preventDefault();
+                    const email = document.getElementById('loginEmail').value;
+                    const password = document.getElementById('loginPassword').value;
+
+                    const storedUser = JSON.parse(localStorage.getItem('user'));
+
+                    if (storedUser && storedUser.email === email && storedUser.password === password) {
+                        localStorage.setItem('loggedIn', 'true');
+                        showSection('products');
+                        document.getElementById('logoutLink').style.display = 'inline';
+                    } else {
+                        alert('Invalid email or password');
+                    }
+                });
+            }
+
+            // Handle Signup
+            const signupForm = document.getElementById('signupForm');
+            if (signupForm) {
+                signupForm.addEventListener('submit', (event) => {
+                    event.preventDefault();
+                    const name = document.getElementById('signupName').value;
+                    const email = document.getElementById('signupEmail').value;
+                    const password = document.getElementById('signupPassword').value;
+
+                    localStorage.setItem('user', JSON.stringify({ name, email, password }));
+                    localStorage.setItem('loggedIn', 'true');
+                    showSection('products');
+                    document.getElementById('logoutLink').style.display = 'inline';
+                });
+            }
+
+            // Check if the user is logged in
+            const loggedIn = localStorage.getItem('loggedIn');
+            if (loggedIn === 'true') {
+                showSection('products');
+                document.getElementById('logoutLink').style.display = 'inline';
+            } else {
+                showSection('home');
+                document.getElementById('logoutLink').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
+
